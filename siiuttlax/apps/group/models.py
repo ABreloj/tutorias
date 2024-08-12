@@ -3,7 +3,7 @@ from django.db.models.signals import post_save
 
 from apps.period.models import Period, Semester
 from apps.career.models import Career, Subject
-from apps.academy.models import Professor
+from apps.academy.models import Professor, Student
 from django.dispatch import receiver
 
 # Create your models here.
@@ -41,6 +41,11 @@ class Group(models.Model):
         Subject,
         verbose_name='Materias',
         blank=True)
+    estudiantes = models.ManyToManyField(
+        Student,
+        verbose_name='Estudiantes',
+        blank=True    
+    )
     ## Many to Many with DetailsGroup
     ## Many to Many with Students
 

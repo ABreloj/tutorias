@@ -1,8 +1,8 @@
-from django.urls import path
+# apps/seguimiento/urls.py
 
-from . import views
+from django.urls import path
+from .views import seguimiento_view
 
 urlpatterns = [
-    path('',views.index,name="index"),
-    path('prueba/',views.Career,name="career"),
+    path('', seguimiento_view, name='seguimiento'),  # Vista principal
 ]

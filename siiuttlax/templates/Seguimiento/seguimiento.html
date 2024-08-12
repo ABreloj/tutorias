@@ -1,0 +1,298 @@
+{% extends 'base.html' %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Freeman&family=Lobster&family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@200&family=Comfortaa:wght@300;400;500&family=Didact+Gothic&family=Nova+Square&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+    
+    <title>Seguimiento Tutorial</title>
+    
+</head>
+
+{% block content %}
+    
+
+    
+<body>
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+       
+        
+   
+    {{ profesor }}
+    <table>
+        <tr>
+            <th>Cuatrimestre</th>
+            <th>Periodo</th>
+        </tr>
+                <tr>
+            <td>{{ group.semester }}</td>
+            <td>{{ period.period }}</td>
+        </tr>
+        
+    </table>
+    <table>
+        <tr>
+            <th>Abreviatura</th>
+            <th>Nombre</th>
+            <th>Nivel</th>
+            
+        </tr>
+        {% for student in students %}
+        <tr>
+            <td>{{ student.interview.carrera }}</td>
+            {%endfor%}
+            
+           
+            <td>{{ career.name }}</td>
+            <td>{{ career.level }}</td>
+        </tr>
+        
+    </table>
+
+    <table>
+        <tr>
+            <th>Tutor</th>
+            <th>Grado</th>
+            <th>Grupo</th>
+            <th>No. Sesiones Grupales</th>
+            <th>No. Sesiones Individuales</th>
+            <th>Fecha</th>
+        </tr>
+        <tr>
+            <td>{{ professor.full_name }}</td>
+        
+            <td>{{ group.semester }}</td>
+            <td>{{ group.group }}</td>
+            <td></td>
+            <td></td>
+            <td> <input type="date" name="" id=""></td>
+        </tr>
+       
+    </table>
+
+    <table BORDER CELLPADDING=10 CELLSPACING=0>
+        <tr>
+            <th colspan="9">
+            </th>
+            <th colspan="32">
+                <center>Materias reprobadas</center>
+            </th>
+            <th colspan="9"><center>Factores por los que el alumno es considerado como vulnerable</center></th>
+            <th colspan="2">Total de alumnos diagnosticados</th>
+            <th rowspan="3">Acción sugerida con Base al diagnostico </th>
+            <th colspan="3">Acción Tutorial - Alumno Canalizado </th>
+            <th rowspan="2">Total de Alumnos canalizados</th>
+            <th rowspan="3">Evidencias de acción tutorial</th>
+            <th colspan="3">Resultado de la acción Tutorial - Alumno Retenido </th>
+            <th rowspan="2">Total de Alumnos canalizados</th>
+            <th rowspan="3">Resultado</th>
+            <th rowspan="3">Observaciones</th>
+
+        </tr>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th colspan="4">ingles</th>
+            <th colspan="4">Español</th>
+            <th colspan="4">Base de datos</th>
+            <th colspan="4">Aplicaciones web</th>
+            <th colspan="4">Aplicaciones web</th>
+            <th colspan="4">Aplicaciones web</th>
+            <th colspan="4">Aplicaciones web</th>
+            <th colspan="4">Aplicaciones web</th>
+            <th colspan="3">Académico (Si= Marcar casiila, No= Dejar en blanco)</th>
+            <th colspan="3">Personal (Si = Marcar / No =  Dejar en blanco)</th>
+            <th colspan="3">Socioeconómico (Si = Marcar / No =  Dejar en blanco)</th>
+            <th rowspan="2">Alumno Vulnerable</th>
+            <th rowspan="2">Tipo de riesgo:
+                A =Académico
+                P = personal
+                S = Socioeconómico</th>
+            <th>Académico </th>
+            <th>Personal</th>
+            <th>Socioeconómico</th>
+            <th>Académico </th>
+            <th>Personal</th>
+            <th>Socioeconómico</th>
+            
+        </tr>
+        <form method="POST" action="{% url 'seguimiento' %}">
+            {% csrf_token %}    
+        <tr>
+            <th>
+                No. Alumno
+            </th>
+            <th>Matricula</th>
+            <th>Nombre</th>
+            <th>Sexo</th>
+            <th>Grado</th>
+            <th>Grupo</th>
+            <th>Discapacidad, (V) Visual, (A) Auditiva,
+                (I) Intelectual, (M) Motora</th>
+            <th>
+                No. de materias acreditas en remedial en cuatrimestre anterior
+            </th>
+            <th>
+                Numero de materias reprobadas
+            </th>
+
+            <th>p1</th>
+            <th>p2</th>
+            <th>p3</th>
+            <th>p4</th>
+            <th>p1</th>
+            <th>p2</th>
+            <th>p3</th>
+            <th>p4</th>
+            <th>p1</th>
+            <th>p2</th>
+            <th>p3</th>
+            <th>p4</th>
+            <th>p1</th>
+            <th>p2</th>
+            <th>p3</th>
+            <th>p4</th>
+            <th>p1</th>
+            <th>p2</th>
+            <th>p3</th>
+            <th>p4</th>
+            <th>p1</th>
+            <th>p2</th>
+            <th>p3</th>
+            <th>p4</th>
+            <th>p1</th>
+            <th>p2</th>
+            <th>p3</th>
+            <th>p4</th>
+            <th>p1</th>
+            <th>p2</th>
+            <th>p3</th>
+            <th>p4</th>
+            <th>Inasistencias </th>
+            <th>Incumplimiento de entregables</th>
+            <th>Poco Interés en las Asignaturas con problemas</th>
+            <th>Emocionales o Psicológicos</th>
+            <th>Carta compromiso  </th>
+            <th>Problemas Familiares</th>
+            <th>Bajos Ingreso </th>
+            <th>Trabaja</th>
+            <th>Padre o Madre de familia </th>
+            <th>Si = Marcar / No =  Dejar en blanco</th>
+            <th>Si = Marcar / No =  Dejar en blanco</th>
+            <th>Si = Marcar / No =  Dejar en blanco</th>
+            <th> (Alumno Canalizado )</th>
+            <th>Si = Marcar / No =  Dejar en blanco</th>
+            <th>Si = Marcar / No =  Dejar en blanco</th>
+            <th>Si = Marcar / No =  Dejar en blanco</th>
+            <th> (Alumno Canalizado )</th>
+        </tr>
+
+        {% for student in students %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ student.enrollment }}</td>
+            <td>{{ student.full_name }}</td>
+            <td>{{ student.profile.sexo }}</td>
+            <td>{{ student.interview.grupo_escolar}}</td>
+            <td>A</td>
+            <td>{{ student.interview.tipo_discapacidad }}</td>
+            
+            <td>{{ form.num_subject_failed }}</td>
+            <td>0S</td>
+            <td>{{ form.m1_p1}}</td>
+            <td>{{ form.m1_p2}}</td>
+            <td>{{ form.m1_p3}}</td>
+            <td>{{ form.m1_p4}}</td>
+            <td>{{ form.m2_p1}}</td>
+            <td>{{ form.m2_p2}}</td>
+            <td>{{ form.m2_p3}}</td>
+            <td>{{ form.m2_p4}}</td>
+            <td>{{ form.m3_p1}}</td>
+            <td>{{ form.m3_p2}}</td>
+            <td>{{ form.m3_p3}}</td>
+            <td>{{ form.m3_p4}}</td>
+            <td>{{ form.m4_p1}}</td>
+            <td>{{ form.m4_p2}}</td>
+            <td>{{ form.m4_p3}}</td>
+            <td>{{ form.m4_p4}}</td>
+            <td>{{ form.m5_p1}}</td>
+            <td>{{ form.m5_p2}}</td>
+            <td>{{ form.m5_p3}}</td>
+            <td>{{ form.m5_p4}}</td>
+            <td>{{ form.m6_p1}}</td>
+            <td>{{ form.m6_p2}}</td>
+            <td>{{ form.m6_p3}}</td>
+            <td>{{ form.m6_p4}}</td>
+            <td>{{ form.m7_p1}}</td>
+            <td>{{ form.m7_p2}}</td>
+            <td>{{ form.m7_p3}}</td>
+            <td>{{ form.m7_p4}}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{ form.inasistencias }}</td>
+            <td>{{ form.Incumplimiento_de_entregables }}</td>
+            <td>{{ form.Poco_Interés_en_las_Asignaturas_con_problemas }}</td>
+            <td>{{ form.Emocionales_o_Psicológicos }}</td>
+            <td>{{ form.Carta_compromiso }}</td>
+            <td>{{ form.Problemas_Familiares }}</td>
+            <td>{{ form.Bajos_Ingreso }}</td>
+            <td>{{ form.Trabaja }}</td>
+            <td>{{ form.Padre_o_Madre_de_familia }}</td>
+            <td>Si</td>
+            <td>A</td>
+            <td>Estudiante regular</td>
+            <td>{{ form.AT_AC_Académico }}</td>
+            <td>{{ form.AT_AC_Personal }}</td>
+            <td>{{ form.AT_AC_Socioeconómico }}</td>
+            <td>No</td>
+            <td>No aplica</td>
+            <td>{{ form.RT_AR_Académico }}</td>
+            <td>{{ form.RT_AR_Personal }}</td>
+            <td>{{ form.RT_AR_Socioeconómico }}</td>
+            <td>No</td>
+            <td>Estudiante regular</td>
+            <td>{{ form.Observaciones }}</td>
+            
+        </tr>
+        {% endfor %}
+
+
+    </table>
+
+    <button type="submit">guardar</button>
+</form>
+
+</body>
+</html>
+{% endblock %}
