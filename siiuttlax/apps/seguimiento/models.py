@@ -1,7 +1,8 @@
 # apps/seguimiento/models.py
 from django.db import models
-
+from apps.academy.models import Student
 class SeguimientoAT(models.Model):
+    student = models.ForeignKey(Student, verbose_name='estudiante', on_delete=models.CASCADE)
     # Materias reprobadas 
     num_subject_failed = models.IntegerField()
 
@@ -46,6 +47,9 @@ class SeguimientoAT(models.Model):
     Trabaja = models.BooleanField(default=False)
     Padre_o_Madre_de_familia = models.BooleanField(default=False)
 
+    
+
+
     # Acciones sugeridas con Base al diagnóstico
     AT_AC_Académico = models.BooleanField(default=False)
     AT_AC_Personal = models.BooleanField(default=False)
@@ -58,6 +62,7 @@ class SeguimientoAT(models.Model):
 
     # Observaciones
     Observaciones = models.TextField()
+    
 
     # Métodos para calcular sumatorias
     def calculate_failed_subjects(self):
@@ -73,9 +78,9 @@ class SeguimientoAT(models.Model):
         failed_subjects = sum(1 for subject in subjects if sum(subject) > 2)
         return failed_subjects
 
-    def save(self, *args, **kwargs):
-        self.num_subject_failed = self.calculate_failed_subjects()
-        super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     self.num_subject_failed = self.calculate_failed_subjects()
+    #     super().save(*args, **kwargs)
 
-    def __str__(self):
+    def _str_(self):
         return f"SeguimientoAT {self.id}"

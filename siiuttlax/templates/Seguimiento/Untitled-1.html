@@ -1,0 +1,99 @@
+<td>{{ form.m1_p2}}</td>
+            <td>{{ form.m1_p3}}</td>
+            <td>{{ form.m1_p4}}</td>
+            <td>{{ form.m2_p1}}</td>
+            <td>{{ form.m2_p2}}</td>
+            <td>{{ form.m2_p3}}</td>
+            <td>{{ form.m2_p4}}</td>
+            <td>{{ form.m3_p1}}</td>
+            <td>{{ form.m3_p2}}</td>
+            <td>{{ form.m3_p3}}</td>
+            <td>{{ form.m3_p4}}</td>
+            <td>{{ form.m4_p1}}</td>
+            <td>{{ form.m4_p2}}</td>
+            <td>{{ form.m4_p3}}</td>
+            <td>{{ form.m4_p4}}</td>
+            <td>{{ form.m5_p1}}</td>
+            <td>{{ form.m5_p2}}</td>
+            <td>{{ form.m5_p3}}</td>
+            <td>{{ form.m5_p4}}</td>
+            <td>{{ form.m6_p1}}</td>
+            <td>{{ form.m6_p2}}</td>
+            <td>{{ form.m6_p3}}</td>
+            <td>{{ form.m6_p4}}</td>
+            <td>{{ form.m7_p1}}</td>
+            <td>{{ form.m7_p2}}</td>
+            <td>{{ form.m7_p3}}</td>
+            <td>{{ form.m7_p4}}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{ form.inasistencias }}</td>
+            <td>{{ form.Incumplimiento_de_entregables }}</td>
+            <td>{{ form.Poco_Interés_en_las_Asignaturas_con_problemas }}</td>
+            <td>{{ form.Emocionales_o_Psicológicos }}</td>
+            <td>{{ form.Carta_compromiso }}</td>
+            <td>{{ form.Problemas_Familiares }}</td>
+            <td>{{ form.Bajos_Ingreso }}</td>
+            <td>{{ form.Trabaja }}</td>
+            <td>{{ form.Padre_o_Madre_de_familia }}</td>
+            <td>Si</td>
+            <td>A</td>
+            <td>Estudiante regular</td>
+            <td>{{ form.AT_AC_Académico }}</td>
+            <td>{{ form.AT_AC_Personal }}</td>
+            <td>{{ form.AT_AC_Socioeconómico }}</td>
+            <td>No</td>
+            <td>No aplica</td>
+            <td>{{ form.RT_AR_Académico }}</td>
+            <td>{{ form.RT_AR_Personal }}</td>
+            <td>{{ form.RT_AR_Socioeconómico }}</td>
+            <td>No</td>
+            <td>Estudiante regular</td>
+            <td>{{ form.Observaciones }}</td>
+
+
+
+
+            descapacidad = f'descapacidad{student.id}'
+            valdescapacidad = request.POST.get(descapacidad)
+            if    valdescapacidad  == 'on':
+                   valdescapacidad = True
+            else:
+                   descapacidad = False
+
+
+
+                   studentVul = f'studentVul-{student.id}'
+                   valstudentVul = request.POST.get(studentVul)
+                   if    valstudentVul == 'on':
+                          valstudentVul = True
+                   else:
+                          valstudentVul = False
+       
+                          studentCana = f'studentCana-{student.id}'
+                          valstudentCana = request.POST.get(studentCana)
+                          if    studentCana == 'on':
+                                studentCana = True
+                          else:
+                                studentCana = False
+            
+           
+
+                                action = f'action-{student.id}'
+                                valaction = request.POST.get(action)
+                                if    action  == 'on':
+                                      action  = True
+                                else:
+                                      action  = False
+                    
+                    
+                                      studentCana2 = f'studentCana2-{student.id}'
+                                      valstudentCana2 = request.POST.get(studentCana2)
+                                      if    studentCana2   == 'on':
+                                            studentCana2   = True
+                                      else:
+                                            studentCana2   = False
+                                                     
+            

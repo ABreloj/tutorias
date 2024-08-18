@@ -37,6 +37,10 @@
     <br>
     <br>
     <br>
+
+    
+   
+    
        
         
    
@@ -59,10 +63,10 @@
             <th>Nivel</th>
             
         </tr>
-        {% for student in students %}
+      
         <tr>
-            <td>{{ student.interview.carrera }}</td>
-            {%endfor%}
+            <td>{{ career.short_name }}</td>
+            
             
            
             <td>{{ career.name }}</td>
@@ -85,8 +89,8 @@
         
             <td>{{ group.semester }}</td>
             <td>{{ group.group }}</td>
-            <td></td>
-            <td></td>
+            <td>8</td>
+            <td>8</td>
             <td> <input type="date" name="" id=""></td>
         </tr>
        
@@ -104,9 +108,6 @@
             <th rowspan="3">Acción sugerida con Base al diagnostico </th>
             <th colspan="3">Acción Tutorial - Alumno Canalizado </th>
             <th rowspan="2">Total de Alumnos canalizados</th>
-            <th rowspan="3">Evidencias de acción tutorial</th>
-            <th colspan="3">Resultado de la acción Tutorial - Alumno Retenido </th>
-            <th rowspan="2">Total de Alumnos canalizados</th>
             <th rowspan="3">Resultado</th>
             <th rowspan="3">Observaciones</th>
 
@@ -118,13 +119,13 @@
             <th></th>
             <th></th>
             <th></th>
+            
             <th></th>
             <th></th>
             <th></th>
             <th colspan="4">ingles</th>
             <th colspan="4">Español</th>
             <th colspan="4">Base de datos</th>
-            <th colspan="4">Aplicaciones web</th>
             <th colspan="4">Aplicaciones web</th>
             <th colspan="4">Aplicaciones web</th>
             <th colspan="4">Aplicaciones web</th>
@@ -143,6 +144,7 @@
             <th>Académico </th>
             <th>Personal</th>
             <th>Socioeconómico</th>
+            <th>Académico</th>
             
         </tr>
         <form method="POST" action="{% url 'seguimiento' %}">
@@ -154,8 +156,7 @@
             <th>Matricula</th>
             <th>Nombre</th>
             <th>Sexo</th>
-            <th>Grado</th>
-            <th>Grupo</th>
+            <th colspan="2">Grado y Grupo</th>
             <th>Discapacidad, (V) Visual, (A) Auditiva,
                 (I) Intelectual, (M) Motora</th>
             <th>
@@ -193,10 +194,7 @@
             <th>p2</th>
             <th>p3</th>
             <th>p4</th>
-            <th>p1</th>
-            <th>p2</th>
-            <th>p3</th>
-            <th>p4</th>
+        
             <th>Inasistencias </th>
             <th>Incumplimiento de entregables</th>
             <th>Poco Interés en las Asignaturas con problemas</th>
@@ -222,68 +220,63 @@
             <td>{{ student.enrollment }}</td>
             <td>{{ student.full_name }}</td>
             <td>{{ student.profile.sexo }}</td>
-            <td>{{ student.interview.grupo_escolar}}</td>
-            <td>A</td>
+            <td colspan="2">{{ student.interview.grupo_escolar}}</td>
+           
             <td>{{ student.interview.tipo_discapacidad }}</td>
             
-            <td>{{ form.num_subject_failed }}</td>
-            <td>0S</td>
-            <td>{{ form.m1_p1}}</td>
-            <td>{{ form.m1_p2}}</td>
-            <td>{{ form.m1_p3}}</td>
-            <td>{{ form.m1_p4}}</td>
-            <td>{{ form.m2_p1}}</td>
-            <td>{{ form.m2_p2}}</td>
-            <td>{{ form.m2_p3}}</td>
-            <td>{{ form.m2_p4}}</td>
-            <td>{{ form.m3_p1}}</td>
-            <td>{{ form.m3_p2}}</td>
-            <td>{{ form.m3_p3}}</td>
-            <td>{{ form.m3_p4}}</td>
-            <td>{{ form.m4_p1}}</td>
-            <td>{{ form.m4_p2}}</td>
-            <td>{{ form.m4_p3}}</td>
-            <td>{{ form.m4_p4}}</td>
-            <td>{{ form.m5_p1}}</td>
-            <td>{{ form.m5_p2}}</td>
-            <td>{{ form.m5_p3}}</td>
-            <td>{{ form.m5_p4}}</td>
-            <td>{{ form.m6_p1}}</td>
-            <td>{{ form.m6_p2}}</td>
-            <td>{{ form.m6_p3}}</td>
-            <td>{{ form.m6_p4}}</td>
-            <td>{{ form.m7_p1}}</td>
-            <td>{{ form.m7_p2}}</td>
-            <td>{{ form.m7_p3}}</td>
-            <td>{{ form.m7_p4}}</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>{{ form.inasistencias }}</td>
-            <td>{{ form.Incumplimiento_de_entregables }}</td>
-            <td>{{ form.Poco_Interés_en_las_Asignaturas_con_problemas }}</td>
-            <td>{{ form.Emocionales_o_Psicológicos }}</td>
-            <td>{{ form.Carta_compromiso }}</td>
-            <td>{{ form.Problemas_Familiares }}</td>
-            <td>{{ form.Bajos_Ingreso }}</td>
-            <td>{{ form.Trabaja }}</td>
-            <td>{{ form.Padre_o_Madre_de_familia }}</td>
-            <td>Si</td>
-            <td>A</td>
-            <td>Estudiante regular</td>
-            <td>{{ form.AT_AC_Académico }}</td>
-            <td>{{ form.AT_AC_Personal }}</td>
-            <td>{{ form.AT_AC_Socioeconómico }}</td>
-            <td>No</td>
-            <td>No aplica</td>
-            <td>{{ form.RT_AR_Académico }}</td>
-            <td>{{ form.RT_AR_Personal }}</td>
-            <td>{{ form.RT_AR_Socioeconómico }}</td>
-            <td>No</td>
-            <td>Estudiante regular</td>
-            <td>{{ form.Observaciones }}</td>
-            
+            <td><input type="text" name="numf-{{student.id}}" id="" value="{{ student.seguimientoat_set.all.first.num_subject_failed }}"></td>
+            <td>{{ student.num_subject_failed }}</td>
+
+            <td><input type="checkbox" name="m1p1-{{student.id}}" id="" {% if student.seguimientoat_set.all.first.m1_p1 %}checked{% endif %}></td>
+            <td><input type="checkbox" name="m1p2-{{student.id}}" id="" {% if student.seguimientoat_set.all.first.m1_p2 %}checked{% endif %}></td>
+            <td><input type="checkbox" name="m1p3-{{student.id}}" id="" {% if student.seguimientoat_set.all.first.m1_p3 %}checked{% endif %}></td>
+            <td><input type="checkbox" name="m1p4-{{student.id}}" id="" {% if student.seguimientoat_set.all.first.m1_p4 %}checked{% endif %}></td>
+            <td><input type="checkbox" name="m2p1-{{student.id}}" id="" {% if student.seguimientoat_set.all.first.m2_p1 %}checked{% endif %}></td>
+            <td><input type="checkbox" name="m2p2-{{student.id}}" id="" {% if student.seguimientoat_set.all.first.m2_p2 %}checked{% endif %}></td>
+            <td><input type="checkbox" name="m2p3-{{student.id}}" id="" {% if student.seguimientoat_set.all.first.m2_p3 %}checked{% endif %}></td>
+            <td><input type="checkbox" name="m2p4-{{student.id}}" id="" {% if student.seguimientoat_set.all.first.m2_p4 %}checked{% endif %}></td>
+            <td><input type="checkbox" name="m3p1-{{student.id}}" id="" {% if student.seguimientoat_set.all.first.m3_p1 %}checked{% endif %}></td>
+            <td><input type="checkbox" name="m3p2-{{student.id}}" id="" {% if student.seguimientoat_set.all.first.m3_p2 %}checked{% endif %}></td>
+            <td><input type="checkbox" name="m3p3-{{student.id}}" id="" {% if student.seguimientoat_set.all.first.m3_p3 %}checked{% endif %}></td>
+            <td><input type="checkbox" name="m3p4-{{student.id}}" id="" {% if student.seguimientoat_set.all.first.m3_p4 %}checked{% endif %}></td>
+            <td><input type="checkbox" name="m4p1-{{student.id}}" id="" {% if student.seguimientoat_set.all.first.m4_p1 %}checked{% endif %}></td>
+            <td><input type="checkbox" name="m4p2-{{student.id}}" id="" {% if student.seguimientoat_set.all.first.m4_p2 %}checked{% endif %}></td>
+            <td><input type="checkbox" name="m4p3-{{student.id}}" id="" {% if student.seguimientoat_set.all.first.m4_p3 %}checked{% endif %}></td>
+            <td><input type="checkbox" name="m4p4-{{student.id}}" id="" {% if student.seguimientoat_set.all.first.m4_p4 %}checked{% endif %}></td>
+            <td><input type="checkbox" name="m5p1-{{student.id}}" id="" {% if student.seguimientoat_set.all.first.m5_p1 %}checked{% endif %}></td>
+            <td><input type="checkbox" name="m5p2-{{student.id}}" id="" {% if student.seguimientoat_set.all.first.m5_p2 %}checked{% endif %}></td>
+            <td><input type="checkbox" name="m5p3-{{student.id}}" id="" {% if student.seguimientoat_set.all.first.m5_p3 %}checked{% endif %}></td>
+            <td><input type="checkbox" name="m5p4-{{student.id}}" id="" {% if student.seguimientoat_set.all.first.m5_p4 %}checked{% endif %}></td>
+            <td><input type="checkbox" name="m6p1-{{student.id}}" id="" {% if student.seguimientoat_set.all.first.m6_p1 %}checked{% endif %}></td>
+            <td><input type="checkbox" name="m6p2-{{student.id}}" id="" {% if student.seguimientoat_set.all.first.m6_p2 %}checked{% endif %}></td>
+            <td><input type="checkbox" name="m6p3-{{student.id}}" id="" {% if student.seguimientoat_set.all.first.m6_p3 %}checked{% endif %}></td>
+            <td><input type="checkbox" name="m6p4-{{student.id}}" id="" {% if student.seguimientoat_set.all.first.m6_p4 %}checked{% endif %}></td>
+            <td><input type="checkbox" name="m7p1-{{student.id}}" id="" {% if student.seguimientoat_set.all.first.m7_p1 %}checked{% endif %}></td>
+            <td><input type="checkbox" name="m7p2-{{student.id}}" id="" {% if student.seguimientoat_set.all.first.m7_p2 %}checked{% endif %}></td>
+            <td><input type="checkbox" name="m7p3-{{student.id}}" id="" {% if student.seguimientoat_set.all.first.m7_p3 %}checked{% endif %}></td>
+            <td><input type="checkbox" name="m7p4-{{student.id}}" id="" {% if student.seguimientoat_set.all.first.m7_p4 %}checked{% endif %}></td>
+            <td><input type="checkbox" name="inasistencias{{student.id}}" id="" {% if student.seguimientoat_set.all.first.inasistencias %}checked{% endif %}></td>
+            <td><input type="checkbox" name="inEntregables{{student.id}}" id="" {% if student.seguimientoat_set.all.first.Incumplimiento_de_entregables %}checked{% endif %}></td>
+            <td><input type="checkbox" name="notInteres{{student.id}}" id="" {% if student.seguimientoat_set.all.first.Poco_Interés_en_las_Asignaturas_con_problemas %}checked{% endif %}></td>
+            <td><input type="checkbox" name="emocion{{student.id}}" id="" {% if student.seguimientoat_set.all.first.Emocionales_o_Psicológicos %}checked{% endif %}></td>
+            <td><input type="checkbox" name="card{{student.id}}" id="" {% if student.seguimientoat_set.all.first.Carta_compromiso %}checked{% endif %}></td>
+            <td><input type="checkbox" name="family{{student.id}}" id="" {% if student.seguimientoat_set.all.first.Problemas_Familiares %}checked{% endif %}></td>
+            <td><input type="checkbox" name="lowIngresos{{student.id}}" id="" {% if student.seguimientoat_set.all.first.Bajos_Ingreso %}checked{% endif %}></td>
+            <td><input type="checkbox" name="work{{student.id}}" id="" {% if student.seguimientoat_set.all.first.Trabaja %}checked{% endif %}></td>
+            <td><input type="checkbox" name="FM{{student.id}}" id="" {% if student.seguimientoat_set.all.first.Padre_o_Madre_de_familia %}checked{% endif %}></td>
+            <td><input type="text" name=""></td>
+            <td><input type="text" name=""></td>
+            <td><input type="checkbox" name="academy{{student.id}}" id="" {% if student.seguimientoat_set.all.first.AT_AC_Académico %}checked{% endif %}></td>
+            <td><input type="checkbox" name="personal{{student.id}}" id="" {% if student.seguimientoat_set.all.first.AT_AC_Personal %}checked{% endif %}></td>
+            <td><input type="checkbox" name="socioeconomic{{student.id}}" id="" {% if student.seguimientoat_set.all.first.AT_AC_Socioeconómico %}checked{% endif %}></td>
+            <td><input type="text" name=""></td>
+            <td><input type="text" name=""></td>
+            <td><input type="checkbox" name="academy2{{student.id}}" id="" {% if student.seguimientoat_set.all.first.RT_AR_Académico %}checked{% endif %}></td>
+            <td><input type="checkbox" name="personal2{{student.id}}" id="" {% if student.seguimientoat_set.all.first.RT_AR_Personal %}checked{% endif %}></td>
+            <td><input type="checkbox" name="socioeconomic2{{student.id}}" id="" {% if student.seguimientoat_set.all.first.RT_AR_Socioeconómico %}checked{% endif %}></td>
+            <td><input type="text" name=""></td>
+            <td>9</td>
+            <td><input type="text" name=""></td>
         </tr>
         {% endfor %}
 
